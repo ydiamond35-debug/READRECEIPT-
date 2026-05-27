@@ -1,0 +1,257 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #050505;
+  color: #f4ead8;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(176, 23, 31, 0.22), transparent 35%),
+    #050505;
+}
+
+.screen {
+  min-height: 100vh;
+  padding: 24px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  color: #df2530;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: 42px;
+  line-height: 1;
+  margin: 16px 0;
+}
+
+h2 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  margin: 8px 0;
+}
+
+.summary {
+  color: #cfc2ad;
+  line-height: 1.6;
+}
+
+.episode-card {
+  margin-top: 36px;
+  padding: 22px;
+  border: 1px solid rgba(244, 234, 216, 0.15);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #171717, #0b0b0b);
+}
+
+.episode-label {
+  color: #df2530;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.episode-card p {
+  color: #a79b89;
+}
+
+button {
+  border: 0;
+  border-radius: 14px;
+  padding: 14px 16px;
+  background: #f4ead8;
+  color: #050505;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nav {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.nav button {
+  background: transparent;
+  color: #f4ead8;
+  border: 1px solid rgba(244, 234, 216, 0.15);
+}
+
+.chat {
+  padding: 0;
+  max-width: 480px;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  border-bottom: 1px solid rgba(244, 234, 216, 0.12);
+}
+
+.chat-header button {
+  background: transparent;
+  color: #f4ead8;
+  font-size: 32px;
+  padding: 0 10px;
+}
+
+.chat-header span {
+  display: block;
+  color: #8f8374;
+  font-size: 12px;
+}
+
+.messages {
+  padding: 18px;
+  min-height: 60vh;
+}
+
+.message {
+  max-width: 78%;
+  margin-bottom: 12px;
+  padding: 13px 14px;
+  border-radius: 18px;
+  line-height: 1.45;
+}
+
+.message.system {
+  max-width: 100%;
+  margin: 10px auto 18px;
+  text-align: center;
+  color: #8f8374;
+  background: transparent;
+  font-size: 13px;
+}
+
+.message.unknown {
+  background: #171717;
+  color: #f4ead8;
+  border-bottom-left-radius: 4px;
+}
+
+.message.maya {
+  margin-left: auto;
+  background: #f4ead8;
+  color: #050505;
+  border-bottom-right-radius: 4px;
+}
+
+.choices {
+  position: sticky;
+  bottom: 0;
+  padding: 16px;
+  background: #050505;
+  border-top: 1px solid rgba(244, 234, 216, 0.12);
+}
+
+.choices p {
+  color: #df2530;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.choices button {
+  width: 100%;
+  margin-bottom: 10px;
+  background: #111;
+  color: #f4ead8;
+  border: 1px solid rgba(244, 234, 216, 0.16);
+  text-align: left;
+}
+
+.attachment {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(223, 37, 48, 0.35);
+  border-radius: 22px;
+  background: rgba(176, 23, 31, 0.1);
+}
+
+.attachment p {
+  color: #d8cdbb;
+}
+
+.attachment button {
+  width: 100%;
+  margin-top: 10px;
+  background: #b0171f;
+  color: white;
+}
+
+.back {
+  background: transparent;
+  color: #f4ead8;
+  padding-left: 0;
+}
+
+.clue {
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: 20px;
+  background: #111;
+  border: 1px solid rgba(244, 234, 216, 0.14);
+}
+
+.clue span {
+  color: #df2530;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.episode-list {
+  display: grid;
+  gap: 12px;
+}
+
+.episode-list div {
+  padding: 18px;
+  border-radius: 20px;
+  background: #111;
+  border: 1px solid rgba(244, 234, 216, 0.14);
+}
+
+.episode-list span {
+  display: block;
+  color: #8f8374;
+  margin-top: 6px;
+}
+
+.pro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gold {
+  background: #c7a86b;
+  color: #120d05;
+  margin-top: 20px;
+}
+
+.reset {
+  margin-top: 12px;
+  background: transparent;
+  border: 1px solid rgba(244, 234, 216, 0.15);
+  color: #f4ead8;
+}
