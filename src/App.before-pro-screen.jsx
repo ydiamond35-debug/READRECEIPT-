@@ -327,46 +327,17 @@ function App() {
       )}
 
       {screen === "pro" && (
-        <main className="screen pro pro-screen">
+        <main className="screen pro">
           <button className="back" onClick={() => setScreen("home")}>
             ‹ Back
           </button>
-
           <p className="eyebrow">READRECEIPT PRO</p>
-          <h1>Unlock the next clue before midnight.</h1>
-
+          <h1>You already know you’re not waiting.</h1>
           <p className="summary">
-            Pro is for readers who need the truth now. Open tomorrow’s message,
-            reveal bonus evidence, and follow alternate endings.
+            Unlock Day 2 early, bonus clues, alternate endings, and full-story
+            binge mode.
           </p>
-
-          <div className="pro-card">
-            <div className="pro-preview-label">Tomorrow’s Message</div>
-            <h2>Day 2: The Photo</h2>
-            <p>“Zoom into the photo. That isn’t Eli’s shadow.”</p>
-          </div>
-
-          <div className="pro-perks">
-            <div>
-              <span>01</span>
-              <p>Unlock Day 2 early</p>
-            </div>
-            <div>
-              <span>02</span>
-              <p>Reveal bonus evidence</p>
-            </div>
-            <div>
-              <span>03</span>
-              <p>Access alternate endings</p>
-            </div>
-            <div>
-              <span>04</span>
-              <p>No ads. No interruptions.</p>
-            </div>
-          </div>
-
-          <button className="gold">Unlock Tomorrow’s Message</button>
-
+          <button className="gold">Unlock Everything</button>
           <button className="reset" onClick={resetDemo}>
             Reset Demo
           </button>
