@@ -248,37 +248,22 @@ function App() {
       )}
 
       {screen === "clues" && (
-        <main className="screen clue-screen">
+        <main className="screen">
           <button className="back" onClick={() => setScreen("home")}>
             ‹ Back
           </button>
-
-          <p className="eyebrow">CASE FILE</p>
           <h1>Clue Board</h1>
 
-          <div className="case-meta">
-            <span>Case: The Wrong Number</span>
-            <span>Evidence Found: {clues.length}/5</span>
-          </div>
-
           {clues.length === 0 ? (
-            <div className="empty-case">
-              <strong>No evidence logged yet.</strong>
-              <p>Read today’s message and choose a reply to unlock your first clue.</p>
-            </div>
+            <p className="summary">No clues yet. Read today’s message first.</p>
           ) : (
             clues.map((clue, index) => (
               <div className="clue" key={clue}>
-                <span>Clue {String(index + 1).padStart(2, "0")}</span>
+                <span>Clue {index + 1}</span>
                 <p>{clue}</p>
               </div>
             ))
           )}
-
-          <div className="locked-clue">
-            <span>Locked Clue</span>
-            <p>Unlock Day 2 to reveal what is hidden in the photo.</p>
-          </div>
         </main>
       )}
 

@@ -582,3 +582,86 @@ button {
   border: 1px solid rgba(223, 37, 48, 0.5);
   box-shadow: 0 12px 28px rgba(176, 23, 31, 0.25);
 }
+
+/* Clue board case-file polish */
+.clue-screen {
+  background:
+    radial-gradient(circle at top, rgba(176, 23, 31, 0.12), transparent 34%),
+    #050505;
+}
+
+.case-meta {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 22px;
+  padding: 16px;
+  border: 1px solid rgba(244, 234, 216, 0.14);
+  border-radius: 18px;
+  background: rgba(244, 234, 216, 0.035);
+  color: #cfc2ad;
+  font-size: 13px;
+}
+
+.clue-screen .clue {
+  position: relative;
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, rgba(244, 234, 216, 0.06), rgba(244, 234, 216, 0.02)),
+    #111;
+  border: 1px solid rgba(244, 234, 216, 0.16);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24);
+}
+
+.clue-screen .clue span {
+  color: #df2530;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.clue-screen .clue p {
+  color: #f4ead8;
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
+.empty-case,
+.locked-clue {
+  margin-top: 14px;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px dashed rgba(244, 234, 216, 0.18);
+  background: rgba(244, 234, 216, 0.025);
+}
+
+.empty-case strong,
+.locked-clue span {
+  display: block;
+  color: #df2530;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-size: 11px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.empty-case p,
+.locked-clue p {
+  color: #8f8374;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.locked-clue {
+  opacity: 0.72;
+}
+
+.locked-clue::before {
+  content: "🔒";
+  display: block;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
