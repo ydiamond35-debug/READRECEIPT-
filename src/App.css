@@ -521,3 +521,64 @@ button {
     transform: translateY(-4px);
   }
 }
+
+/* Dramatic evidence attachment card */
+.attachment {
+  position: relative;
+  overflow: hidden;
+  margin-top: 22px;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(223, 37, 48, 0.38);
+  background:
+    radial-gradient(circle at top right, rgba(223, 37, 48, 0.16), transparent 36%),
+    linear-gradient(180deg, rgba(244, 234, 216, 0.05), rgba(176, 23, 31, 0.1)),
+    #0b0b0b;
+  box-shadow: 0 18px 42px rgba(176, 23, 31, 0.22);
+}
+
+.attachment strong {
+  display: block;
+  color: #df2530;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.attachment strong::after {
+  content: "Lake Hollow Trail · 2:13 AM";
+  display: block;
+  margin-top: 7px;
+  color: #8f8374;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.attachment::before {
+  content: "";
+  display: block;
+  height: 150px;
+  margin: 12px 0 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(244, 234, 216, 0.12);
+  background:
+    radial-gradient(circle at 38% 48%, rgba(244, 234, 216, 0.48) 0 3%, transparent 4%),
+    radial-gradient(circle at 51% 48%, rgba(244, 234, 216, 0.42) 0 3%, transparent 4%),
+    radial-gradient(circle at 78% 38%, rgba(5, 5, 5, 0.95) 0 4%, transparent 5%),
+    linear-gradient(180deg, #24241f, #050505 80%);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.75);
+}
+
+.attachment p {
+  color: #d8cdbb;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+.attachment button {
+  background: #b0171f;
+  color: #fff;
+  border: 1px solid rgba(223, 37, 48, 0.5);
+  box-shadow: 0 12px 28px rgba(176, 23, 31, 0.25);
+}
