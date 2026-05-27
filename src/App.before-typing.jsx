@@ -3,37 +3,28 @@ import "./App.css";
 
 const defaultName = "Maya";
 
-const openingMessages = [
-  { from: "system", text: "This sender is not in your contacts." },
-  { from: "unknown", text: "I need to know if Eli is telling you everything." },
-  { from: "maya", text: "Who is this?" },
-  { from: "unknown", text: "Someone who knows what he did." },
-];
+function createOpeningMessages() {
+  return [
+    { from: "system", text: "This sender is not in your contacts." },
+    { from: "unknown", text: "I need to know if Eli is telling you everything." },
+    { from: "maya", text: "Who is this?" },
+    { from: "unknown", text: "Someone who knows what he did." },
+  ];
+}
 
-function App() {
-  const savedName = localStorage.getItem("readreceiptPlayerName") || "";
-  const [playerName, setPlayerName] = useState(savedName);
-  const [nameInput, setNameInput] = useState(savedName);
-  const [screen, setScreen] = useState(savedName ? "home" : "name");
-  const [visibleMessages, setVisibleMessages] = useState([]);
-  const [introDone, setIntroDone] = useState(false);
-  const [chosen, setChosen] = useState(false);
-  const [clues, setClues] = useState([]);
-  const [isTyping, setIsTyping] = useState(false);
-  const [showAttachment, setShowAttachment] = useState(false);
+function createChoices(playerName) {
+  const name = playerName || defaultName;
 
-  const displayName = playerName || defaultName;
-
-  const choices = [
+  return [
     {
       id: "truth",
       label: "Tell me what you know.",
       result: [
         { from: "maya", text: "Tell me what you know." },
         { from: "unknown", text: "The night Zoe vanished, Eli kept something." },
-        { from: "unknown", text: `Something that belonged to ${displayName}.` },
+        { from: "unknown", text: `Something that belonged to ${name}.` },
       ],
-      clue: `Eli kept something from the night Zoe disappeared. It may belong to ${displayName}.`,
+      clue: `Eli kept something from the night Zoe disappeared. It may belong to ${name}.`,
     },
     {
       id: "why",
@@ -41,9 +32,9 @@ function App() {
       result: [
         { from: "maya", text: "Why are you telling me this?" },
         { from: "unknown", text: "Because Eli lied first." },
-        { from: "unknown", text: `Ask him why ${displayName}'s hoodie was at the lake.` },
+        { from: "unknown", text: `Ask him why ${name}'s hoodie was at the lake.` },
       ],
-      clue: `${displayName}'s red hoodie may be connected to Zoe's disappearance.`,
+      clue: `${name}'s red hoodie may be connected to Zoe's disappearance.`,
     },
     {
       id: "police",
@@ -51,39 +42,24 @@ function App() {
       result: [
         { from: "maya", text: "I'm calling the police." },
         { from: "unknown", text: "You already did." },
-        { from: "unknown", text: `Ask them why ${displayName}'s statement is missing.` },
+        { from: "unknown", text: `Ask them why ${name}'s statement is missing.` },
       ],
-      clue: `${displayName}'s police statement may have been removed.`,
+      clue: `${name}'s police statement may have been removed.`,
     },
   ];
+}
 
-  function playMessages(messages, doneCallback) {
-    setIsTyping(false);
+function App() {
+  const savedName = localStorage.getItem("readreceiptPlayerName") || "";
+  const [playerName, setPlayerName] = useState(savedName);
+  const [nameInput, setNameInput] = useState(savedName);
+  const [screen, setScreen] = useState(savedName ? "home" : "name");
+  const [messages, setMessages] = useState(createOpeningMessages());
+  const [chosen, setChosen] = useState(false);
+  const [clues, setClues] = useState([]);
 
-    let delay = 300;
-
-    messages.forEach((message) => {
-      if (message.from === "unknown") {
-        setTimeout(() => setIsTyping(true), delay);
-        delay += 700;
-        setTimeout(() => {
-          setIsTyping(false);
-          setVisibleMessages((current) => [...current, message]);
-        }, delay);
-        delay += 450;
-      } else {
-        setTimeout(() => {
-          setVisibleMessages((current) => [...current, message]);
-        }, delay);
-        delay += 500;
-      }
-    });
-
-    setTimeout(() => {
-      setIsTyping(false);
-      if (doneCallback) doneCallback();
-    }, delay + 200);
-  }
+  const displayName = playerName || defaultName;
+  const choices = createChoices(displayName);
 
   function startStory() {
     const cleanName = nameInput.trim() || defaultName;
@@ -92,36 +68,18 @@ function App() {
     setScreen("home");
   }
 
-  function startEpisode() {
-    setVisibleMessages([]);
-    setIntroDone(false);
-    setChosen(false);
-    setShowAttachment(false);
-    setScreen("chat");
-
-    playMessages(openingMessages, () => {
-      setIntroDone(true);
-    });
-  }
-
   function pickChoice(choice) {
+    setMessages([...createOpeningMessages(), ...choice.result]);
     setChosen(true);
-    setIntroDone(false);
 
     if (!clues.includes(choice.clue)) {
       setClues([...clues, choice.clue]);
     }
-
-    playMessages(choice.result, () => {
-      setShowAttachment(true);
-    });
   }
 
   function resetDemo() {
-    setVisibleMessages([]);
-    setIntroDone(false);
+    setMessages(createOpeningMessages());
     setChosen(false);
-    setShowAttachment(false);
     setClues([]);
     setScreen("home");
   }
@@ -130,7 +88,9 @@ function App() {
     localStorage.removeItem("readreceiptPlayerName");
     setPlayerName("");
     setNameInput("");
-    resetDemo();
+    setMessages(createOpeningMessages());
+    setChosen(false);
+    setClues([]);
     setScreen("name");
   }
 
@@ -156,15 +116,12 @@ function App() {
             Start Story
           </button>
 
-          <button
-            className="reset"
-            onClick={() => {
-              setNameInput(defaultName);
-              setPlayerName(defaultName);
-              localStorage.setItem("readreceiptPlayerName", defaultName);
-              setScreen("home");
-            }}
-          >
+          <button className="reset" onClick={() => {
+            setNameInput(defaultName);
+            setPlayerName(defaultName);
+            localStorage.setItem("readreceiptPlayerName", defaultName);
+            setScreen("home");
+          }}>
             Continue as Maya
           </button>
         </main>
@@ -183,7 +140,7 @@ function App() {
             <p className="episode-label">Today’s Episode</p>
             <h2>The Wrong Number</h2>
             <p>Day 1 · Mystery · 3 min read</p>
-            <button onClick={startEpisode}>Read Today’s Message</button>
+            <button onClick={() => setScreen("chat")}>Read Today’s Message</button>
           </section>
 
           <div className="nav">
@@ -201,26 +158,18 @@ function App() {
             <button onClick={() => setScreen("home")}>‹</button>
             <div>
               <strong>Unknown Number</strong>
-              <span>{isTyping ? "typing..." : "online"}</span>
+              <span>online</span>
             </div>
           </header>
 
           <section className="messages">
-            {visibleMessages.map((message, index) => (
+            {messages.map((message, index) => (
               <div key={index} className={`message ${message.from}`}>
                 {message.text}
               </div>
             ))}
 
-            {isTyping && (
-              <div className="typing-indicator">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            )}
-
-            {showAttachment && (
+            {chosen && (
               <div className="attachment">
                 <strong>Attachment received</strong>
                 <p>
@@ -234,7 +183,7 @@ function App() {
             )}
           </section>
 
-          {introDone && !chosen && (
+          {!chosen && (
             <section className="choices">
               <p>How do you reply?</p>
               {choices.map((choice) => (
