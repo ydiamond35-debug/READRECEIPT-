@@ -344,3 +344,72 @@ button {
 .episode-card {
   max-width: 100%;
 }
+
+/* Chat screen polish */
+.chat {
+  background:
+    radial-gradient(circle at top, rgba(176, 23, 31, 0.12), transparent 34%),
+    #050505;
+}
+
+.chat-header {
+  position: sticky;
+  top: 0;
+  background: rgba(5, 5, 5, 0.96);
+  backdrop-filter: blur(14px);
+  z-index: 2;
+}
+
+.chat-header strong {
+  font-size: 16px;
+}
+
+.messages {
+  padding: 22px 18px;
+}
+
+.message {
+  font-size: 15px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.message.unknown {
+  border: 1px solid rgba(244, 234, 216, 0.08);
+}
+
+.message.maya {
+  box-shadow: 0 10px 24px rgba(244, 234, 216, 0.08);
+}
+
+.choices {
+  padding: 18px;
+}
+
+.choices button {
+  min-height: 54px;
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.attachment {
+  box-shadow: 0 16px 34px rgba(176, 23, 31, 0.18);
+}
+
+.attachment strong {
+  color: #df2530;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+}
+
+/* Final Maya bubble fix */
+.message.maya {
+  background: #3a1114;
+  color: #f4ead8;
+  border: 1px solid rgba(223, 37, 48, 0.35);
+  box-shadow: 0 10px 24px rgba(176, 23, 31, 0.18);
+}
+
+.message.maya::after {
+  content: "";
+}
