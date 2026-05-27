@@ -283,46 +283,22 @@ function App() {
       )}
 
       {screen === "episodes" && (
-        <main className="screen episodes-screen">
+        <main className="screen">
           <button className="back" onClick={() => setScreen("home")}>
             ‹ Back
           </button>
+          <h1>Episodes</h1>
 
-          <p className="eyebrow">EPISODES</p>
-          <h1>The Last Message</h1>
-          <p className="summary">
-            One clue unlocks every day. Pro readers can open tomorrow’s message early.
-          </p>
-
-          <div className="episode-timeline">
-            <div className="episode-row unlocked">
-              <span className="episode-day">Day 1</span>
-              <div>
-                <strong>The Wrong Number</strong>
-                <p>Unlocked · Today’s message</p>
-              </div>
+          <div className="episode-list">
+            <div>
+              <strong>Day 1: The Wrong Number</strong>
+              <span>Unlocked</span>
             </div>
-
-            <div className="episode-row locked">
-              <span className="episode-day">Day 2</span>
-              <div>
-                <strong>The Photo</strong>
-                <p>Locked until tomorrow</p>
-              </div>
-            </div>
-
-            <div className="episode-row pro-preview">
-              <span className="episode-day">Pro</span>
-              <div>
-                <strong>Early clue preview</strong>
-                <p>“Zoom into the photo. That isn’t Eli’s shadow.”</p>
-              </div>
+            <div>
+              <strong>Day 2: The Photo</strong>
+              <span>Locked until tomorrow</span>
             </div>
           </div>
-
-          <button className="gold" onClick={() => setScreen("pro")}>
-            Unlock Day 2 Early
-          </button>
         </main>
       )}
 

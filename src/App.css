@@ -665,3 +665,74 @@ button {
   font-size: 22px;
   margin-bottom: 8px;
 }
+
+/* Episodes page polish */
+.episodes-screen {
+  background:
+    radial-gradient(circle at top, rgba(176, 23, 31, 0.12), transparent 34%),
+    #050505;
+}
+
+.episode-timeline {
+  display: grid;
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.episode-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(244, 234, 216, 0.14);
+  background: rgba(244, 234, 216, 0.035);
+}
+
+.episode-row strong {
+  display: block;
+  color: #f4ead8;
+  font-family: Georgia, serif;
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.episode-row p {
+  margin: 0;
+  color: #8f8374;
+  line-height: 1.45;
+}
+
+.episode-day {
+  color: #df2530;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.episode-row.unlocked {
+  border-color: rgba(244, 234, 216, 0.22);
+}
+
+.episode-row.locked {
+  opacity: 0.72;
+  border-style: dashed;
+}
+
+.episode-row.locked::after {
+  content: "🔒";
+  font-size: 20px;
+}
+
+.episode-row.pro-preview {
+  border-color: rgba(199, 168, 107, 0.38);
+  background:
+    radial-gradient(circle at top right, rgba(199, 168, 107, 0.12), transparent 32%),
+    rgba(244, 234, 216, 0.035);
+}
+
+.episodes-screen .gold {
+  width: 100%;
+}
