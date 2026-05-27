@@ -275,3 +275,72 @@ button {
   border-color: rgba(244, 234, 216, 0.35);
   background: rgba(244, 234, 216, 0.06);
 }
+
+/* Phone layout polish */
+.app {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+}
+
+.screen {
+  width: min(100%, 430px);
+  min-height: 100dvh;
+  padding: 34px 20px 28px;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.home h1 {
+  max-width: 11ch;
+  font-size: clamp(40px, 9vw, 56px);
+  letter-spacing: 0.3px;
+}
+
+.summary {
+  max-width: 34ch;
+}
+
+.episode-card {
+  margin-top: 28px;
+  padding: 24px;
+}
+
+.nav {
+  margin-top: 18px;
+  gap: 12px;
+}
+
+.nav button {
+  min-height: 52px;
+  border-radius: 18px;
+}
+
+.chat {
+  width: min(100%, 430px);
+}
+
+.messages {
+  min-height: calc(100dvh - 230px);
+}
+
+@media (min-width: 700px) {
+  .screen {
+    padding-top: 56px;
+  }
+}
+
+/* Headline refinement */
+.home h1 {
+  max-width: 14ch;
+  font-size: clamp(38px, 8vw, 52px);
+  line-height: 0.98;
+}
+
+.episode-card {
+  max-width: 100%;
+}
