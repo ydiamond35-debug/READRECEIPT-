@@ -413,3 +413,38 @@ button {
 .message.maya::after {
   content: "";
 }
+
+/* Choice button polish */
+.choices {
+  border-top: 1px solid rgba(244, 234, 216, 0.16);
+  background:
+    linear-gradient(180deg, rgba(5, 5, 5, 0.72), #050505 35%),
+    #050505;
+}
+
+.choices p {
+  margin-bottom: 14px;
+}
+
+.choices button {
+  position: relative;
+  padding-right: 46px;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.choices button::after {
+  content: "›";
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #df2530;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.choices button:active {
+  transform: scale(0.98);
+  background: rgba(176, 23, 31, 0.12);
+  border-color: rgba(223, 37, 48, 0.45);
+}
