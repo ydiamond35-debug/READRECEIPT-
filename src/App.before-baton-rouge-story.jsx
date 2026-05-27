@@ -5,11 +5,9 @@ const defaultName = "Maya";
 
 const openingMessages = [
   { from: "system", text: "This sender is not in your contacts." },
-  { from: "unknown", text: "Don’t say my name in this phone." },
+  { from: "unknown", text: "I need to know if Eli is telling you everything." },
   { from: "maya", text: "Who is this?" },
-  { from: "unknown", text: "Somebody who was there when Dre vanished." },
-  { from: "unknown", text: "He didn’t run." },
-  { from: "unknown", text: "Somebody in Baton Rouge handed him over." },
+  { from: "unknown", text: "Someone who knows what he did." },
 ];
 
 function App() {
@@ -29,35 +27,33 @@ function App() {
   const choices = [
     {
       id: "truth",
-      label: "Who handed him over?",
+      label: "Tell me what you know.",
       result: [
-        { from: "maya", text: "Who handed him over?" },
-        { from: "unknown", text: "That’s the part you won’t want to believe." },
-        { from: "unknown", text: `The person in the red varsity jacket knows ${displayName}.` },
+        { from: "maya", text: "Tell me what you know." },
+        { from: "unknown", text: "The night Zoe vanished, Eli kept something." },
+        { from: "unknown", text: `Something that belonged to ${displayName}.` },
       ],
-      clue: "Someone in a red varsity jacket may have helped set Dre up.",
+      clue: `Eli kept something from the night Zoe disappeared. It may belong to ${displayName}.`,
     },
     {
       id: "why",
-      label: "Why are you texting me?",
+      label: "Why are you telling me this?",
       result: [
-        { from: "maya", text: "Why are you texting me?" },
-        { from: "unknown", text: "Because everybody else is scared to say it." },
-        { from: "unknown", text: "Dre was last seen behind a corner store in Baton Rouge." },
-        { from: "unknown", text: "And the camera caught more than they told you." },
+        { from: "maya", text: "Why are you telling me this?" },
+        { from: "unknown", text: "Because Eli lied first." },
+        { from: "unknown", text: `Ask him why ${displayName}'s hoodie was at the lake.` },
       ],
-      clue: "A gas station camera may show what happened after Dre disappeared.",
+      clue: `${displayName}'s red hoodie may be connected to Zoe's disappearance.`,
     },
     {
-      id: "warning",
-      label: "I’m not playing with you.",
+      id: "police",
+      label: "I'm calling the police.",
       result: [
-        { from: "maya", text: "I’m not playing with you." },
-        { from: "unknown", text: "Then stop trusting what they told your family." },
-        { from: "unknown", text: `Dre didn’t skip town, ${displayName}.` },
-        { from: "unknown", text: "Somebody made sure he couldn’t come home." },
+        { from: "maya", text: "I'm calling the police." },
+        { from: "unknown", text: "You already did." },
+        { from: "unknown", text: `Ask them why ${displayName}'s statement is missing.` },
       ],
-      clue: "Dre may have been set up instead of running away.",
+      clue: `${displayName}'s police statement may have been removed.`,
     },
   ];
 
@@ -177,14 +173,15 @@ function App() {
       {screen === "home" && (
         <main className="screen home">
           <p className="eyebrow">READRECEIPT</p>
-          <h1>One text can shake the whole block.</h1>
+          <h1>One message can change everything.</h1>
           <p className="summary">
-            {displayName} gets a midnight text about Dre, their brother who vanished after leaving a Baton Rouge corner store.
+            {displayName} receives a text about Eli, the last person seen with Zoe before
+            she disappeared.
           </p>
 
           <section className="episode-card">
             <p className="episode-label">Today’s Episode</p>
-            <h2>The Text After Midnight</h2>
+            <h2>The Wrong Number</h2>
             <p>Day 1 · Mystery · 3 min read</p>
             <button onClick={startEpisode}>Read Today’s Message</button>
           </section>
@@ -227,7 +224,8 @@ function App() {
               <div className="attachment">
                 <strong>Attachment received</strong>
                 <p>
-                  A gas station camera still shows Dre behind a corner store with someone in a red varsity jacket.
+                  A blurry photo from the lake shows someone wearing {displayName}'s red
+                  hoodie.
                 </p>
                 <button onClick={() => setScreen("pro")}>
                   Unlock Day 2 Now
@@ -259,7 +257,7 @@ function App() {
           <h1>Clue Board</h1>
 
           <div className="case-meta">
-            <span>Case: The Text After Midnight</span>
+            <span>Case: The Wrong Number</span>
             <span>Evidence Found: {clues.length}/5</span>
           </div>
 
@@ -279,7 +277,7 @@ function App() {
 
           <div className="locked-clue">
             <span>Locked Clue</span>
-            <p>Unlock Day 2 to reveal who was in the car with Dre.</p>
+            <p>Unlock Day 2 to reveal what is hidden in the photo.</p>
           </div>
         </main>
       )}
@@ -291,16 +289,16 @@ function App() {
           </button>
 
           <p className="eyebrow">EPISODES</p>
-          <h1>Block List</h1>
+          <h1>The Last Message</h1>
           <p className="summary">
-            One message unlocks every day. In Baton Rouge, every secret has a witness.
+            One clue unlocks every day. Pro readers can open tomorrow’s message early.
           </p>
 
           <div className="episode-timeline">
             <div className="episode-row unlocked">
               <span className="episode-day">Day 1</span>
               <div>
-                <strong>The Text After Midnight</strong>
+                <strong>The Wrong Number</strong>
                 <p>Unlocked · Today’s message</p>
               </div>
             </div>
@@ -308,7 +306,7 @@ function App() {
             <div className="episode-row locked">
               <span className="episode-day">Day 2</span>
               <div>
-                <strong>The Gas Station Tape</strong>
+                <strong>The Photo</strong>
                 <p>Locked until tomorrow</p>
               </div>
             </div>
@@ -317,7 +315,7 @@ function App() {
               <span className="episode-day">Pro</span>
               <div>
                 <strong>Early clue preview</strong>
-                <p>“Zoom into the mirror. Dre wasn’t the only one in the car.”</p>
+                <p>“Zoom into the photo. That isn’t Eli’s shadow.”</p>
               </div>
             </div>
           </div>
@@ -335,7 +333,7 @@ function App() {
           </button>
 
           <p className="eyebrow">READRECEIPT PRO</p>
-          <h1>Unlock the next text before midnight.</h1>
+          <h1>Unlock the next clue before midnight.</h1>
 
           <p className="summary">
             Pro is for readers who need the truth now. Open tomorrow’s message,
@@ -344,8 +342,8 @@ function App() {
 
           <div className="pro-card">
             <div className="pro-preview-label">Tomorrow’s Message</div>
-            <h2>Day 2: The Gas Station Tape</h2>
-            <p>“Zoom into the mirror. Dre wasn’t the only one in the car.”</p>
+            <h2>Day 2: The Photo</h2>
+            <p>“Zoom into the photo. That isn’t Eli’s shadow.”</p>
           </div>
 
           <div className="pro-perks">
