@@ -255,3 +255,23 @@ button {
   border: 1px solid rgba(244, 234, 216, 0.15);
   color: #f4ead8;
 }
+
+.episode-card button {
+  width: 100%;
+  margin-top: 12px;
+  background: #b0171f;
+  color: #fff;
+  border: 1px solid rgba(223, 37, 48, 0.45);
+  box-shadow: 0 12px 28px rgba(176, 23, 31, 0.22);
+}
+
+.episode-card button:hover {
+  background: #df2530;
+}
+
+.nav button:hover,
+.choices button:hover,
+.reset:hover {
+  border-color: rgba(244, 234, 216, 0.35);
+  background: rgba(244, 234, 216, 0.06);
+}
